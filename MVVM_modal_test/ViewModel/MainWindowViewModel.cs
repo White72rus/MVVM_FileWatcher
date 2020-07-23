@@ -11,12 +11,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Input;
 
 namespace SkyCloudStorage.ViewModel
 {
     public class MainWindowViewModel : BaseViewModel {
         private Visibility _loginMenuVisibility = Visibility.Visible;
-        private Visibility _mainFormVisibility = Visibility.Hidden;
+        private Visibility _mainFormVisibility = Visibility.Visible;
         private DelegateCommand delegateCommand;
         private string title;
         private double _loginMenuTop;
@@ -104,9 +105,9 @@ namespace SkyCloudStorage.ViewModel
             }
         }
 
-        public DelegateCommand ButtonOnClicCommand => RunCommand(delegateCommand, OnClic);
-        public DelegateCommand OpenFolderCommand => RunCommand(delegateCommand, OpenFolder);
-        public DelegateCommand OnDeactivated => RunCommand(delegateCommand, ()=> {
+        public ICommand ButtonOnClicCommand => RunCommand(delegateCommand, OnClic);
+        public ICommand OpenFolderCommand => RunCommand(delegateCommand, OpenFolder);
+        public ICommand OnDeactivated => RunCommand(delegateCommand, ()=> {
             if (MainFormVisibility == Visibility.Visible)
                 MainFormVisibility = Visibility.Hidden;
         });
@@ -134,7 +135,8 @@ namespace SkyCloudStorage.ViewModel
 
         void OnClose()
         {
-            CloseAction.Invoke();
+            //CloseAction.Invoke();
+            Application.Current.Shutdown();
         }
 
         void OpenFolder()

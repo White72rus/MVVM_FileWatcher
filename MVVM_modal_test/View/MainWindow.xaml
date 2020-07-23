@@ -5,8 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:SkyCloudStorage.View"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:vm="clr-namespace:SkyCloudStorage.ViewModel"
     mc:Ignorable="d"
-        
+
     Title="SCS" 
     Height="755" 
     Width="1080.31" 
@@ -18,7 +19,9 @@
     Topmost="True"
     BorderThickness="0"
     Closed="Window_Closed" Loaded="Window_Loaded">
-
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <!--<ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -37,28 +40,15 @@
 
         <Grid x:Name="GeneralAppGrid" HorizontalAlignment="Right"
             Background="#FF232323"
-            Margin="0,10,318,0" 
+            Margin="0,10,318,0"
             Width="368" 
             Height="551"
             VerticalAlignment="Top"
             Visibility="{Binding MainFormVisibility}">
-            
+
             <Border BorderBrush="#FF8B8B8B" BorderThickness="0.8" CornerRadius="1">
                 <Grid>
-                    <Rectangle Style="{DynamicResource RectangleMainStyle}" StrokeThickness="0"
-                        Margin="0,436,0,0" Panel.ZIndex="2" Fill="#FF3A3A3A" Stroke="#FFB6B6B6">
-                        <!--<Rectangle.Effect>
-                        <DropShadowEffect Direction="90" 
-                                            BlurRadius="28" 
-                                            Color="#FF636363" 
-                                            RenderingBias="Quality" 
-                                            ShadowDepth="3"/>
-                    </Rectangle.Effect>-->
-
-                    </Rectangle>
-
-
-                    <Grid x:Name="MainMenu" Margin="0,436,0,0" Panel.ZIndex="3" d:IsLocked="True">
+                    <Grid x:Name="MainMenu" Margin="0,436,0,0" Background="#FF3A3A3A" Panel.ZIndex="3" d:IsLocked="True">
                         <Button x:Name="SyncButton"  Style="{StaticResource ButtonStyle}"
                                 Margin="138,10,138,10">
                             <Image Source="{StaticResource SyncIcon}" Width="70" Height="70"/>
@@ -77,16 +67,6 @@
 
                     <Rectangle Style="{DynamicResource RectangleMainStyle}" 
                     Margin="0,0,0,475" Panel.ZIndex="2" Fill="#FF12BD50"/>
-
-                    <Button x:Name="Run" Content="х"
-                        FontSize="30"
-                        HorizontalAlignment="Left" 
-                        VerticalAlignment="Bottom" 
-                        Width="24" Height="25"
-                        Background="Red"
-                        BorderBrush="Black"
-                        BorderThickness="2"
-                        Command="{Binding OnCloseCommand}" Panel.ZIndex="2"/>
 
                     <Grid HorizontalAlignment="Left" Height="270" 
                 Margin="43,136,0,0" VerticalAlignment="Top" 
@@ -109,38 +89,7 @@
                 VerticalContentAlignment="Center" Padding="0,0,0,5" Panel.ZIndex="2" FontFamily="Corbel Light"/>
 
                     <!--SCROLL-->
-                    <!--<ScrollViewer x:Name="ScrollLogs" Margin="0,120">-->
-
-                    <!--<ItemsControl ItemsSource="{Binding ListInfoTosts}" Width="368" MouseDoubleClick="ItemsControl_MouseDoubleClick">
-                -->
-                    <!--<ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical">
-                        </StackPanel>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>-->
-                    <!--
                     
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="0">
-                            <Grid HorizontalAlignment="Stretch" Height="70">
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock Grid.Column="0" Text="{Binding Name}"/>
-                                <TextBlock Grid.Column="1" Text="{Binding Desc}"/>
-
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>-->
-                    <!--<Grid Style="{StaticResource TostInfoStyle}"></Grid>-->
-
                     <!--<ListBox ItemsSource="{Binding ListInfoTosts}" Background="Transparent" 
                         BorderBrush="{x:Null}">
                 <ListBox.ItemTemplate>
@@ -173,10 +122,9 @@
                     <!--
             </ListBox>-->
                     <ListView ItemsSource="{Binding ListInfoTosts}" Margin="0,81,0,110" 
-                    Background="{x:Null}" 
-                    ItemContainerStyle="{DynamicResource MyListViewItemStyle}" 
-                    MouseDoubleClick="ListView_MouseDoubleClick" 
-                    BorderBrush="{x:Null}" Panel.ZIndex="1" Foreground="#FFE0E0E0">
+                                Background="{x:Null}" 
+                                ItemContainerStyle="{DynamicResource MyListViewItemStyle}"
+                                BorderBrush="{x:Null}" Panel.ZIndex="1" Foreground="#FFE0E0E0">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Black" BorderThickness="1">
@@ -194,15 +142,24 @@
                     </ListView>
                     <!--</ScrollViewer>-->
 
-                    <Button Content="Button" HorizontalAlignment="Left" 
-                Height="23" Margin="0,501,0,0" 
-                VerticalAlignment="Top" Width="24"
-                Command="{Binding ButtonOnClicCommand}" Panel.ZIndex="2" Background="#FF12BD48"/>
-                    
                     <Rectangle Style="{DynamicResource RectangleMainStyle}" 
-                        Margin="0,0,0,535" Panel.ZIndex="2" Fill="#FF3A3A3A"/>
+                                Margin="0,0,0,535" Panel.ZIndex="2" Fill="#FF3A3A3A"/>
                 </Grid>
             </Border>
+            
+            <Button x:Name="Run" Content="х"
+                        FontSize="30"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Bottom" 
+                        Width="24" Height="25"
+                        Background="Red"
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        Command="{Binding OnCloseCommand}" Panel.ZIndex="2" Margin="0,0,0,2"/>
+            <Button Content="Button" HorizontalAlignment="Left" 
+                            Height="23" Margin="0,501,0,0" 
+                            VerticalAlignment="Top" Width="24"
+                            Command="{Binding ButtonOnClicCommand}" Panel.ZIndex="2" Background="#FF12BD48"/>
         </Grid>
 
 
@@ -242,7 +199,7 @@
         </Grid>
 
     </Grid>
-    
+
     <!--Deactivated Event-->
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Deactivated">

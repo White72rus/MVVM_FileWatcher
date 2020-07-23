@@ -26,9 +26,6 @@ namespace SkyCloudStorage.View
         {
             InitializeComponent();
             MainWindowViewModel viewModel = new MainWindowViewModel();
-            DataContext = viewModel;
-            if (viewModel.CloseAction == null)
-                viewModel.CloseAction = new Action(() => this.Close());
 
             NotifyIcon.MouseDownAction = new Action(() => { viewModel.MainFormVisible(); });
         }
@@ -54,21 +51,6 @@ namespace SkyCloudStorage.View
             Thickness margin = new Thickness(5, 5, 0, 0);
 
             //LoginMenu.Margin = margin; //(this.Width / 2) - LoginMenu.Width / 2;
-        }
-
-        private void ItemsControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var obj = sender;
-        }
-
-        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            var obj = sender;
-        }
-
-        private void Window_Deactivated(object sender, EventArgs e)
-        {
-            MessageBox.Show("Deactivated");
         }
     }
 }
