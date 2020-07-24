@@ -18,8 +18,8 @@ namespace SkyCloudStorage.ViewModel
     public class MainWindowViewModel : BaseViewModel {
         private Visibility _loginMenuVisibility = Visibility.Visible;
         private Visibility _mainFormVisibility = Visibility.Visible;
-        private DelegateCommand delegateCommand;
-        private string title;
+        private DelegateCommand _delegateCommand;
+        private string _title;
         private double _loginMenuTop;
         private double _loginMenuLeft;
         private string _path = @"x:\DownloadFTP";
@@ -31,7 +31,7 @@ namespace SkyCloudStorage.ViewModel
 
         public Visibility LoginMenuVisibility
         {
-            get { return _loginMenuVisibility; }
+            get => _loginMenuVisibility;
             private set
             {
                 _loginMenuVisibility = value;
@@ -41,7 +41,7 @@ namespace SkyCloudStorage.ViewModel
 
         public Visibility MainFormVisibility
         {
-            get { return _mainFormVisibility; }
+            get =>_mainFormVisibility;
             private set
             {
                 _mainFormVisibility = value;
@@ -51,8 +51,8 @@ namespace SkyCloudStorage.ViewModel
 
         public string Title
         {
-            get => title;
-            private set { title = value;
+            get => _title;
+            private set { _title = value;
                 OnPropertyChanged(nameof(Title));
             }
         }
@@ -79,35 +79,35 @@ namespace SkyCloudStorage.ViewModel
 
         public ObservableCollection<string> List
         {
-            get => list;
-            private set { list = value;
+            get => _list;
+            private set { _list = value;
                 OnPropertyChanged(nameof(List));
             }
         }
 
         public ObservableCollection<PanelInfo> ListInfo
         {
-            get => listInfo;
+            get => _listInfo;
             private set
             {
-                listInfo = value;
+                _listInfo = value;
                 OnPropertyChanged(nameof(ListInfo));
             }
         }
 
         public ObservableCollection<InfoTost> ListInfoTosts
         {
-            get => listInfoTosts;
+            get => _listInfoTosts;
             private set
             {
-                listInfoTosts = value;
+                _listInfoTosts = value;
                 OnPropertyChanged(nameof(ListInfoTosts));
             }
         }
 
-        public ICommand ButtonOnClicCommand => RunCommand(delegateCommand, OnClic);
-        public ICommand OpenFolderCommand => RunCommand(delegateCommand, OpenFolder);
-        public ICommand OnDeactivated => RunCommand(delegateCommand, ()=> {
+        public ICommand ButtonOnClicCommand => RunCommand(_delegateCommand, OnClic);
+        public ICommand OpenFolderCommand => RunCommand(_delegateCommand, OpenFolder);
+        public ICommand OnDeactivated => RunCommand(_delegateCommand, ()=> {
             if (MainFormVisibility == Visibility.Visible)
                 MainFormVisibility = Visibility.Hidden;
         });
@@ -115,7 +115,7 @@ namespace SkyCloudStorage.ViewModel
         /// <summary>
         /// Комманда на закрытие окна программы.
         /// </summary>
-        public DelegateCommand OnCloseCommand => RunCommand(delegateCommand, OnClose);
+        public DelegateCommand OnCloseCommand => RunCommand(_delegateCommand, OnClose);
 
         /// <summary>
         /// Метод исполнения комманд.
@@ -154,7 +154,7 @@ namespace SkyCloudStorage.ViewModel
                 MainFormVisibility = Visibility.Visible;
         }
 
-        private ObservableCollection<string> list = new ObservableCollection<string> {
+        private ObservableCollection<string> _list = new ObservableCollection<string> {
             //"Петя",
             //"Вася",
             //"Юра",
@@ -162,7 +162,7 @@ namespace SkyCloudStorage.ViewModel
             //"Сережа"
         };
 
-        private ObservableCollection<PanelInfo> listInfo = new ObservableCollection<PanelInfo>
+        private ObservableCollection<PanelInfo> _listInfo = new ObservableCollection<PanelInfo>
         {
             new PanelInfo(70,200, "1"),
             new PanelInfo(70,200, "2"),
@@ -174,7 +174,7 @@ namespace SkyCloudStorage.ViewModel
             new PanelInfo(70,200, "8"),
         };
 
-        private ObservableCollection<InfoTost> listInfoTosts = new ObservableCollection<InfoTost>
+        private ObservableCollection<InfoTost> _listInfoTosts = new ObservableCollection<InfoTost>
         {
             new InfoTost("Name_0", "Desc_0"),
             new InfoTost("Name_1", "Desc_1"),
