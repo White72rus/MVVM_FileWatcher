@@ -8,16 +8,23 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace SkyCloudStorage.SetupApp {
-    internal class Setup
+    internal static class Setup
     {
-        private readonly string _path = "settings";
-        public Settings GetSettings()
+        private static readonly string _path = "settings";
+        private static readonly string _pathStorage = "\\AppData\\Roaming\\SCS\\Storage";
+        public static Settings GetSettings()
         {
             try
             {
                 Settings result;
                 if (!new FileInfo(_path).Exists)
-                    return new Settings();
+                    return new Settings()
+                    {
+                        PathLocalFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + _pathStorage,
+                        AutoRun = true,
+                        DataBaseAdrr = "",
+                        RememberedUser = Environment.UserName,
+                    };
 
                 using (StreamReader sr = File.OpenText(_path))
                 {
@@ -32,7 +39,7 @@ namespace SkyCloudStorage.SetupApp {
             }
         }
 
-        public void SetSettings(Settings settings)
+        public static void SetSettings(Settings settings)
         {
             try
             {

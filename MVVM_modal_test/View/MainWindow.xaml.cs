@@ -1,5 +1,7 @@
 ﻿using SkyCloudStorage.Modules;
 using SkyCloudStorage.ViewModel;
+using SkyCloudStorage.SetupApp;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace SkyCloudStorage.View
 {
     /// <summary>
@@ -26,8 +29,8 @@ namespace SkyCloudStorage.View
         {
             InitializeComponent();
             MainWindowViewModel viewModel = new MainWindowViewModel();
-
             NotifyIcon.MouseDownAction = new Action(() => { viewModel.MainFormVisible(); });
+            Initializer initializer = Initializer.Instance;
         }
 
         private void Window_Closed(object sender, EventArgs e)
