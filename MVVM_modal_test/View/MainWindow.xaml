@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:SkyCloudStorage.View"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:vm="clr-namespace:SkyCloudStorage.ViewModel"
     mc:Ignorable="d"
@@ -23,6 +22,7 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <vm:LoginMenuViewModel x:Key="LoginMenuViewModel"/>
         <!--<ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Assets/Cloud-done-outline.xaml"/>
@@ -165,38 +165,64 @@
 
 
         <!--LOGIN MENU-->
-        <Grid x:Name="LoginMenu" 
+        <Grid x:Name="LoginMenu" Background="#FF343434"
             Visibility="{Binding LoginMenuVisibility}" Height="500" Width="350"
-            HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="10,10,720,243">
+            HorizontalAlignment="Center"  VerticalAlignment="Center" 
+            DataContext="{StaticResource LoginMenuViewModel}">
 
-            <Rectangle Fill="#FF343434" Stroke="#FFEC5353" 
-                    StrokeThickness="2" RadiusX="1" 
-                    RadiusY="1"/>
+            <!--<Grid.DataContext>
+                <vm:LoginMenuViewModel/>
+            </Grid.DataContext>-->
 
-            <Label 
-                Margin="33,10,39,0" VerticalAlignment="Top" Height="56" 
-                HorizontalContentAlignment="Center" 
-                VerticalContentAlignment="Center" 
-                Padding="0" UseLayoutRounding="True" 
-                FontSize="36" Content="{Binding Title}"/>
-            <Grid Margin="33,252,33,147">
+            <Border BorderBrush="#FF8B8B8B" BorderThickness="0.8" CornerRadius="1">
+                <Grid>
+                    <Label Margin="33,10,39,0" VerticalAlignment="Top" Height="56" 
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center" 
+                            Padding="0" UseLayoutRounding="True" 
+                            FontSize="36" Content="{Binding Title}"/>
 
-                <TextBox Style="{StaticResource placeHolder}" x:Name="TextBoxLogin" Height="40" 
-                TextWrapping="Wrap" Text="" VerticalAlignment="Top" Tag="Pleas enter you login..."
-                Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
-                        Foreground="#FFDEDEDE" UndoLimit="95" MaxLength="16" IsUndoEnabled="False"/>
+                    <Grid Margin="33,252,33,147">
 
-                <PasswordBox x:Name="TextBoxPass" Height="40" Margin="0,61,0,0" 
-                VerticalAlignment="Top" Tag="Pass"
-                Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
-                        Foreground="#FFDEDEDE" MaxLength="16" PasswordChar="●" Panel.ZIndex="2"/>
+                        <TextBox Style="{StaticResource placeHolder}" x:Name="TextBoxLogin" Height="40" 
+                                TextWrapping="Wrap" Text="" VerticalAlignment="Top" Tag="Pleas enter you login..."
+                                Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
+                                Foreground="#FFDEDEDE" UndoLimit="95" MaxLength="16" IsUndoEnabled="False"/>
 
-                <TextBlock HorizontalAlignment="Left" Height="40" Margin="0,61,0,0" 
-                        TextWrapping="Wrap" Text="Plase enter you pass..." 
-                        VerticalAlignment="Top" Width="284" FontSize="24" 
-                        Foreground="#FF767676" Panel.ZIndex="1"/>
-            </Grid>
+
+                        <Grid x:Name="PassBox" Margin="0,61,0,0">
+                            <PasswordBox x:Name="TextBoxPass" Height="38"
+                                 VerticalAlignment="Top" Tag="Pass"
+                                 Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
+                                 Foreground="#FFDEDEDE" MaxLength="16" PasswordChar="●" Panel.ZIndex="2">
+
+                            </PasswordBox>
+
+                            <TextBlock x:Name="PlaceholderPass" HorizontalAlignment="Left" Height="40" 
+                               TextWrapping="Wrap" Text="Plase enter you pass..." 
+                               VerticalAlignment="Top" Width="284" FontSize="24" 
+                               Foreground="#FF767676" Panel.ZIndex="1" Visibility="Collapsed" d:IsHidden="True" d:IsLocked="True"/>
+                        </Grid>
+                    </Grid>
+
+                    <Button x:Name="SubmitLogin" Style="{StaticResource ButtonStyle-1}"
+                    Width="200" Height="50" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,350,0,0" Content="Вход" Background="#FF12BD50" 
+                    FontSize="24" FontFamily="Consolas" Command="{Binding SubmitLoginButton}"/>
+                </Grid>
+            </Border>
+
+            <!--<Rectangle Fill="#FF343434" Stroke="#FFEC5353" 
+                       StrokeThickness="1" RadiusX="1" 
+                       RadiusY="1" d:IsHidden="True"/>-->
+
+            
         </Grid>
+
+        <Label Content="{Binding MainFormVisibility}" HorizontalAlignment="Left" 
+               Margin="10,10,0,0" VerticalAlignment="Top" 
+               Height="157" Width="463" FontSize="50" Foreground="Red"/>
 
     </Grid>
 

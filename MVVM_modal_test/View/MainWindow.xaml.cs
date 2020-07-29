@@ -29,6 +29,7 @@ namespace SkyCloudStorage.View
         {
             InitializeComponent();
             MainWindowViewModel viewModel = new MainWindowViewModel();
+            DataContext = viewModel;
             NotifyIcon.MouseDownAction = new Action(() => { viewModel.MainFormVisible(); });
             Initializer initializer = Initializer.Instance;
         }

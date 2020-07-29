@@ -16,7 +16,7 @@ using System.Windows.Input;
 namespace SkyCloudStorage.ViewModel
 {
     public class MainWindowViewModel : BaseViewModel {
-        private Visibility _loginMenuVisibility = Visibility.Visible;
+        //private Visibility _loginMenuVisibility = Visibility.Visible;
         private Visibility _mainFormVisibility = Visibility.Visible;
         private DelegateCommand _delegateCommand;
         private string _title;
@@ -29,15 +29,15 @@ namespace SkyCloudStorage.ViewModel
         // Делегат из View, метода закрытия окна.
         public Action CloseAction { get; set; }
 
-        public Visibility LoginMenuVisibility
-        {
-            get => _loginMenuVisibility;
-            private set
-            {
-                _loginMenuVisibility = value;
-                OnPropertyChanged(nameof(LoginMenuVisibility));
-            }
-        }
+        //public Visibility LoginMenuVisibility
+        //{
+        //    get => _loginMenuVisibility;
+        //    private set
+        //    {
+        //        _loginMenuVisibility = value;
+        //        OnPropertyChanged(nameof(LoginMenuVisibility));
+        //    }
+        //}
 
         public Visibility MainFormVisibility
         {
@@ -107,6 +107,10 @@ namespace SkyCloudStorage.ViewModel
 
         public ICommand ButtonOnClicCommand => RunCommand(_delegateCommand, OnClic);
         public ICommand OpenFolderCommand => RunCommand(_delegateCommand, OpenFolder);
+        //public ICommand SubmitLoginButton => RunCommand(_delegateCommand, () =>
+        //{
+        //    LoginMenuVisibility = Visibility.Hidden;
+        //});
         public ICommand OnDeactivated => RunCommand(_delegateCommand, ()=> {
             if (MainFormVisibility == Visibility.Visible)
                 MainFormVisibility = Visibility.Hidden;
@@ -116,17 +120,6 @@ namespace SkyCloudStorage.ViewModel
         /// Комманда на закрытие окна программы.
         /// </summary>
         public DelegateCommand OnCloseCommand => RunCommand(_delegateCommand, OnClose);
-
-        /// <summary>
-        /// Метод исполнения комманд.
-        /// </summary>
-        /// <param name="command"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        private DelegateCommand RunCommand(DelegateCommand command, Action action, bool canExec = true)
-        {
-            return command ?? (command = new DelegateCommand(obj => { action(); }, obj => canExec));
-        }
 
         void OnClic()
         {
@@ -186,5 +179,16 @@ namespace SkyCloudStorage.ViewModel
             new InfoTost("Name_7", "Desc_7"),
             
         };
+
+        /// <summary>
+        /// Метод исполнения комманд.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        private DelegateCommand RunCommand(DelegateCommand command, Action action, bool canExec = true)
+        {
+            return command ?? (command = new DelegateCommand(obj => { action(); }, obj => canExec));
+        }
     }
 }

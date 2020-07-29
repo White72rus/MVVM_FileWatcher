@@ -23,7 +23,7 @@ namespace SkyCloudStorage.SetupApp {
                         PathLocalFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + _pathStorage,
                         AutoRun = true,
                         DataBaseAdrr = "",
-                        RememberedUser = Environment.UserName,
+                        RememberedUser = "",
                     };
 
                 using (StreamReader sr = File.OpenText(_path))

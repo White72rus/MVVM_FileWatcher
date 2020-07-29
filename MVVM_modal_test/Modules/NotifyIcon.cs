@@ -9,17 +9,11 @@ using System.Windows.Forms;
 namespace SkyCloudStorage.Modules {
     public static class NotifyIcon {
 
-        private static Icon icon = System.Drawing.Icon.ExtractAssociatedIcon("SkyCloudStorage.exe");
-
-        private static string tooltip = "";
-
-        private static bool visible = true;
-
         private static System.Windows.Forms.NotifyIcon notifyIcon;
 
-        public static string Tooltip { get => tooltip; set => tooltip = value; }
-        public static bool Visible { get => visible; set => visible = value; }
-        public static Icon Icon { get => icon; set => icon = value; }
+        public static string Tooltip { get; set; } = "";
+        public static bool Visible { get; set; } = true;
+        public static Icon Icon { get; set; } = System.Drawing.Icon.ExtractAssociatedIcon("SkyCloudStorage.exe");
 
         public static Action MouseDownAction { set; get; }
 
@@ -27,12 +21,8 @@ namespace SkyCloudStorage.Modules {
         {
             notifyIcon = new System.Windows.Forms.NotifyIcon();
 
-            //if (icon == null)
-            //{
-            //    throw new NullReferenceException("Не указана иконка значка");
-            //}
             notifyIcon.Icon = Icon;
-            notifyIcon.Text = tooltip;
+            notifyIcon.Text = Tooltip;
             notifyIcon.Visible = Visible;
             notifyIcon.BalloonTipText = "BalloonTipText";
             notifyIcon.BalloonTipTitle = "TitleBalloonTipText";
