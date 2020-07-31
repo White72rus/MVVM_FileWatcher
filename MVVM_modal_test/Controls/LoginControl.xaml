@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="SkyCloudStorage.Controls.LoginControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SkyCloudStorage.Controls"
+             mc:Ignorable="d" Width="290" Height="200">
+    <Grid>
+        <!--<TextBox Style="{StaticResource placeHolder}" x:Name="TextBoxLogin" Height="40" 
+                 TextWrapping="Wrap" Text="{Binding Login}" VerticalAlignment="Top" Tag="Pleas enter you login..."
+                 Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
+                 Foreground="#FFDEDEDE" UndoLimit="95" MaxLength="16" IsUndoEnabled="False"/>
+
+
+        <Grid x:Name="PassBox" Margin="0,61,0,0">
+            <PasswordBox x:Name="TextBoxPass" Height="38"
+                         VerticalAlignment="Top" Tag="Pass"
+                         Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
+                         Foreground="#FFDEDEDE" MaxLength="16" PasswordChar="●" Panel.ZIndex="2"/>
+
+            <TextBlock x:Name="PlaceholderPass" HorizontalAlignment="Left" Height="40" 
+                       TextWrapping="Wrap" Text="Plase enter you pass..." 
+                       VerticalAlignment="Top" Width="284" FontSize="24" 
+                       Foreground="#FF767676" Panel.ZIndex="1" Visibility="Collapsed" d:IsHidden="True" d:IsLocked="True"/>
+        </Grid>
+
+        <Button x:Name="SubmitLogin" Style="{StaticResource ButtonStyle-1}"
+                Width="200" Height="50" 
+                HorizontalAlignment="Center" 
+                Content="Вход" Background="#FF12BD50" 
+                FontSize="24" FontFamily="Consolas" Command="{Binding SubmitLoginButton}" Margin="0,100,0,0"/>-->
+
+    </Grid>
+</UserControl>

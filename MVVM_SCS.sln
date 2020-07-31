@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM_SCS", "MVVM_modal_test\MVVM_SCS.csproj", "{3483130A-2C39-4EB8-A95C-E94FFA20F7C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfXamlTest", "WpfXamlTest\WpfXamlTest.csproj", "{ADDBE8F2-B8F7-4872-80B2-CFD51F1F527B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfFaramework", "WpfFaramework\WpfFaramework.csproj", "{35C9D16A-F2C2-4E14-9199-2656CB58E654}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3483130A-2C39-4EB8-A95C-E94FFA20F7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3483130A-2C39-4EB8-A95C-E94FFA20F7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3483130A-2C39-4EB8-A95C-E94FFA20F7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADDBE8F2-B8F7-4872-80B2-CFD51F1F527B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDBE8F2-B8F7-4872-80B2-CFD51F1F527B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDBE8F2-B8F7-4872-80B2-CFD51F1F527B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDBE8F2-B8F7-4872-80B2-CFD51F1F527B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C9D16A-F2C2-4E14-9199-2656CB58E654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C9D16A-F2C2-4E14-9199-2656CB58E654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C9D16A-F2C2-4E14-9199-2656CB58E654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C9D16A-F2C2-4E14-9199-2656CB58E654}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

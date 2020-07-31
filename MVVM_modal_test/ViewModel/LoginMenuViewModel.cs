@@ -8,9 +8,11 @@ using System.Windows.Input;
 
 namespace SkyCloudStorage.ViewModel {
     internal class LoginMenuViewModel : BaseViewModel {
-
+        private string _title;
         private Visibility _loginMenuVisibility = Visibility.Visible;
         private DelegateCommand _delegateCommand;
+        private string _login;
+        private string _password;
 
         public Visibility LoginMenuVisibility
         {
@@ -19,6 +21,31 @@ namespace SkyCloudStorage.ViewModel {
             {
                 _loginMenuVisibility = value;
                 OnPropertyChanged(nameof(LoginMenuVisibility));
+            }
+        }
+
+        public string Title
+        {
+            get => _title;
+            private set
+            {
+                _title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+
+        public string Login {
+            get => _login;
+            set {
+                _login = value;
+                OnPropertyChanged(nameof(Login));
+            }
+        }
+        public string Password {
+            get => _password;
+            private set {
+                _password = value;
+                OnPropertyChanged(nameof(Password));
             }
         }
 

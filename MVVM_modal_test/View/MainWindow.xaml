@@ -60,7 +60,7 @@
                         </Button>
 
                         <Button x:Name="FolderButton" Style="{StaticResource ButtonStyle}"
-                                Margin="18,10,247,10" Command="{Binding OpenFolderCommand}">
+                                Margin="18,10,247,10" Command="{Binding OpenFolderCommand}" CommandParameter="123">
                             <Image Source="{StaticResource FolderIcon}" Width="70" Height="70"/>
                         </Button>
                     </Grid>
@@ -170,10 +170,6 @@
             HorizontalAlignment="Center"  VerticalAlignment="Center" 
             DataContext="{StaticResource LoginMenuViewModel}">
 
-            <!--<Grid.DataContext>
-                <vm:LoginMenuViewModel/>
-            </Grid.DataContext>-->
-
             <Border BorderBrush="#FF8B8B8B" BorderThickness="0.8" CornerRadius="1">
                 <Grid>
                     <Label Margin="33,10,39,0" VerticalAlignment="Top" Height="56" 
@@ -185,23 +181,21 @@
                     <Grid Margin="33,252,33,147">
 
                         <TextBox Style="{StaticResource placeHolder}" x:Name="TextBoxLogin" Height="40" 
-                                TextWrapping="Wrap" Text="" VerticalAlignment="Top" Tag="Pleas enter you login..."
-                                Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
-                                Foreground="#FFDEDEDE" UndoLimit="95" MaxLength="16" IsUndoEnabled="False"/>
+                                 TextWrapping="Wrap" Text="{Binding Login}" VerticalAlignment="Top" Tag="Pleas enter you login..."
+                                 Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
+                                 Foreground="#FFDEDEDE" UndoLimit="95" MaxLength="16" IsUndoEnabled="False"/>
 
 
                         <Grid x:Name="PassBox" Margin="0,61,0,0">
                             <PasswordBox x:Name="TextBoxPass" Height="38"
                                  VerticalAlignment="Top" Tag="Pass"
                                  Background="{x:Null}" FontSize="24" VerticalContentAlignment="Center" 
-                                 Foreground="#FFDEDEDE" MaxLength="16" PasswordChar="●" Panel.ZIndex="2">
-
-                            </PasswordBox>
+                                 Foreground="#FFDEDEDE" MaxLength="16" PasswordChar="●" Panel.ZIndex="2"/>
 
                             <TextBlock x:Name="PlaceholderPass" HorizontalAlignment="Left" Height="40" 
-                               TextWrapping="Wrap" Text="Plase enter you pass..." 
-                               VerticalAlignment="Top" Width="284" FontSize="24" 
-                               Foreground="#FF767676" Panel.ZIndex="1" Visibility="Collapsed" d:IsHidden="True" d:IsLocked="True"/>
+                                       TextWrapping="Wrap" Text="Plase enter you pass..." 
+                                       VerticalAlignment="Top" Width="284" FontSize="24" 
+                                       Foreground="#FF767676" Panel.ZIndex="1" Visibility="Collapsed" d:IsHidden="True" d:IsLocked="True"/>
                         </Grid>
                     </Grid>
 

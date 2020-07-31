@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\LoginControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Properties\AppResDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,9 +109,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\LoginControl.xaml.cs">
+      <DependentUpon>LoginControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\InfoTost.cs" />
+    <Compile Include="Model\IPasswordSupplier.cs" />
     <Compile Include="Model\PanelInfo.cs" />
+    <Compile Include="Modules\Fingerprint.cs" />
     <Compile Include="Modules\NotifyIcon.cs" />
+    <Compile Include="Modules\ToastNotification.cs" />
     <Compile Include="SetupApp\Initializer.cs" />
     <Compile Include="SetupApp\Settings.cs" />
     <Compile Include="SetupApp\Setup.cs" />

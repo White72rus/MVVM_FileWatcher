@@ -105,13 +105,21 @@ namespace SkyCloudStorage.ViewModel
             }
         }
 
+        public ICommand OpenFolderCommand_ { get; }
+
+        public MainWindowViewModel()
+        {
+            //OpenFolderCommand = new DelegateCommand(OpenFolder);
+        }
+
+
         public ICommand ButtonOnClicCommand => RunCommand(_delegateCommand, OnClic);
         public ICommand OpenFolderCommand => RunCommand(_delegateCommand, OpenFolder);
         //public ICommand SubmitLoginButton => RunCommand(_delegateCommand, () =>
         //{
         //    LoginMenuVisibility = Visibility.Hidden;
         //});
-        public ICommand OnDeactivated => RunCommand(_delegateCommand, ()=> {
+        public ICommand OnDeactivated => RunCommand(_delegateCommand, () => {
             if (MainFormVisibility == Visibility.Visible)
                 MainFormVisibility = Visibility.Hidden;
         });
@@ -119,7 +127,7 @@ namespace SkyCloudStorage.ViewModel
         /// <summary>
         /// Комманда на закрытие окна программы.
         /// </summary>
-        public DelegateCommand OnCloseCommand => RunCommand(_delegateCommand, OnClose);
+        public ICommand OnCloseCommand => RunCommand(_delegateCommand, OnClose);
 
         void OnClic()
         {
